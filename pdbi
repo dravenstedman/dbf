@@ -1,4 +1,4 @@
-#!../../usr/bin/python2.7 -BOO
+#!/usr/bin/python2 -BOO
 # PDBF - Python DBF Implementation
 import sys
 memory = []
