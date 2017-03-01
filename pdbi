@@ -1,0 +1,38 @@
+#!python2 -BOO
+# PDBF - Python DBF Implementation
+import sys
+memory = []
+for i in range(0,65536):
+	memory.append(0)
+try:
+	filename = sys.argv[1]
+except:
+	print "Usage: pdbi [file]"
+	sys.exit(1)
+datapointer = 0
+commands = []
+current_command = 0
+infile = open(filename,'r').read().replace("\t","").replace("\n","").replace(" ","")
+for j in range(0,len(infile)):
+	if j%2==1:
+		commands.append(infile[j-1]+str(infile[j]))
+while True:
+	x = commands[current_command]
+	if x == 'FF':
+		datapointer += 1
+	elif x == 'BB':
+		datapointer -= 1
+	elif x == 'II':
+		memory[datapointer] += 1
+	elif x == 'DD':
+		memory[datapointer] -= 1
+	elif x == 'OO':
+		sys.stdout.write(chr(memory[datapointer]))
+		sys.stdout.flush()
+	elif x.startswith('J'):
+		command += int(x[1])
+	else:
+		pass
+	current_command += 1
+	if current_command >= len(commands):
+		break
