@@ -26,4 +26,3 @@ To-Do:
 v1.5 - reimplement in Pascal and/or C++
 v1.6 - add unconditional jump backwards
 v2.0 - add conditional jumps
-v3.0 - add user input
